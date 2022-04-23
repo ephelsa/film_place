@@ -1,0 +1,17 @@
+name: the_movie_db_api
+description: A remote implementation of The Movie DB
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.16.0 <3.0.0"
+
+dependencies:
+  film_place_api:
+    path: ../film_place_api
+
+dev_dependencies:
+  coverage: ^1.1.0
+  mocktail: ^0.2.0
+  test: ^1.19.2
+  very_good_analysis: ^2.4.0

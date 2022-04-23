@@ -113,6 +113,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.1"
+  equatable:
+    dependency: transitive
+    description:
+      name: equatable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.3"
   fake_async:
     dependency: transitive
     description:
@@ -127,6 +134,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.2"
+  film_place_api:
+    dependency: "direct main"
+    description:
+      path: "packages/film_place_api"
+      relative: true
+    source: path
+    version: "1.0.0+1"
+  film_place_repository:
+    dependency: "direct main"
+    description:
+      path: "packages/film_place_repository"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -392,6 +413,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.9"
+  the_movie_db_api:
+    dependency: "direct main"
+    description:
+      path: "packages/the_movie_db_api"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   typed_data:
     dependency: transitive
     description:

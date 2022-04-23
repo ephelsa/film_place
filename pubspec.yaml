@@ -8,12 +8,18 @@ environment:
 
 dependencies:
   bloc: ^8.0.3
+  film_place_api:
+    path: packages/film_place_api
+  film_place_repository:
+    path: packages/film_place_repository
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
   flutter_localizations:
     sdk: flutter
   intl: ^0.17.0
+  the_movie_db_api:
+    path: packages/the_movie_db_api
 
 dev_dependencies:
   bloc_test: ^9.0.3
