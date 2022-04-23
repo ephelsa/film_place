@@ -1,7 +1,11 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
+    "moviesHomeTabTitle": "Movies",
+    "@moviesHomeTabTitle": {
+        "description": "Home tab option for movies"
+    },
+    "favoritesHomeTabTitle": "Favorites",
+    "@favoritesHomeTabTitle": {
+        "description": "Home tab option for favorites"
     }
 }

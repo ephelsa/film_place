@@ -1,7 +1,11 @@
 {
     "@@locale": "es",
-    "counterAppBarTitle": "Contador",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
+    "moviesHomeTabTitle": "Películas",
+    "@moviesHomeTabTitle": {
+        "description": "Opción mostrada en el home referente a películas"
+    },
+    "favoritesHomeTabTitle": "Favoritos",
+    "@favoritesHomeTabTitle": {
+        "description": "Opción mostrada en el home referente a favoritos"
     }
 }
