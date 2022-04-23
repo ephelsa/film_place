@@ -1,5 +1,5 @@
-name: film_place_api
-description: The interface and models for an API
+name: actor_repository
+description: Dart package which manages the actor domain
 version: 1.0.0+1
 publish_to: none
 
@@ -7,8 +7,10 @@ environment:
   sdk: ">=2.16.0 <3.0.0"
 
 dependencies:
-  equatable: ^2.0.3
-
+  hive_local_storage:
+    path: ../hive_local_storage
+  the_movie_db_api:
+    path: ../the_movie_db_api
 dev_dependencies:
   coverage: ^1.1.0
   mocktail: ^0.2.0

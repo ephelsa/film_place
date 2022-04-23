@@ -8,6 +8,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "30.0.0"
+  actor_repository:
+    dependency: "direct main"
+    description:
+      path: "packages/actor_repository"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   analyzer:
     dependency: transitive
     description:
@@ -114,7 +121,7 @@ packages:
     source: hosted
     version: "0.4.1"
   equatable:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: equatable
       url: "https://pub.dartlang.org"
@@ -134,20 +141,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.2"
-  film_place_api:
-    dependency: "direct main"
-    description:
-      path: "packages/film_place_api"
-      relative: true
-    source: path
-    version: "1.0.0+1"
-  film_place_repository:
-    dependency: "direct main"
-    description:
-      path: "packages/film_place_repository"
-      relative: true
-    source: path
-    version: "1.0.0+1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -177,6 +170,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
+  genre_repository:
+    dependency: "direct main"
+    description:
+      path: "packages/genre_repository"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   glob:
     dependency: transitive
     description:
@@ -184,6 +184,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.2"
+  hive_local_storage:
+    dependency: "direct main"
+    description:
+      path: "packages/hive_local_storage"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   http_multi_server:
     dependency: transitive
     description:
@@ -261,6 +268,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.0"
+  movie_repository:
+    dependency: "direct main"
+    description:
+      path: "packages/movie_repository"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   nested:
     dependency: transitive
     description:

@@ -1,0 +1,22 @@
+name: movie_repository
+description: Dart package which manages the movie domain
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.16.0 <3.0.0"
+
+dependencies:
+  actor_repository:
+    path: ../actor_repository
+  genre_repository:
+    path: ../genre_repository
+  hive_local_storage:
+    path: ../hive_local_storage
+  the_movie_db_api:
+    path: ../the_movie_db_api
+dev_dependencies:
+  coverage: ^1.1.0
+  mocktail: ^0.2.0
+  test: ^1.19.2
+  very_good_analysis: ^2.4.0

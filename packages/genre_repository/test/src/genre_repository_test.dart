@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:film_place_api/film_place_api.dart';
+import 'package:genre_repository/genre_repository.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('FilmPlaceApi', () {
+  group('GenreRepository', () {
     test('can be instantiated', () {
-      expect(FilmPlaceApi(), isNotNull);
+      expect(GenreRepository(), isNotNull);
     });
   });
 }

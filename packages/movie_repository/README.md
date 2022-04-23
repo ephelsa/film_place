@@ -1,9 +1,9 @@
-# film_place_api
+# movie_repository
 
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
 [![License: MIT][license_badge]][license_link]
 
-The interface and models for an API
+Dart package which manages the movie domain
 
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license_link]: https://opensource.org/licenses/MIT

@@ -1,5 +1,5 @@
-name: film_place_repository
-description: Repository that handles app requests
+name: genre_repository
+description: Dart package which manages the genre domain
 version: 1.0.0+1
 publish_to: none
 
@@ -7,9 +7,10 @@ environment:
   sdk: ">=2.16.0 <3.0.0"
 
 dependencies:
-  film_place_api:
-    path: ../film_place_api
-
+  hive_local_storage:
+    path: ../hive_local_storage
+  the_movie_db_api:
+    path: ../the_movie_db_api
 dev_dependencies:
   coverage: ^1.1.0
   mocktail: ^0.2.0
