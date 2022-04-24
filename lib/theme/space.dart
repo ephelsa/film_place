@@ -1,4 +1,6 @@
 class FilmPlaceSpace {
+  const FilmPlaceSpace._();
+
   static const double thinHigh = 4;
   static const double small = 8;
   static const double mediumLow = 12;

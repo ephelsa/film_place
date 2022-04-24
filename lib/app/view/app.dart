@@ -2,13 +2,23 @@ import 'package:film_place/home/home.dart';
 import 'package:film_place/l10n/l10n.dart';
 import 'package:film_place/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_repository/movie_repository.dart';
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  const App({
+    Key? key,
+    required this.movieRepository,
+  }) : super(key: key);
+
+  final MovieRepository movieRepository;
 
   @override
   Widget build(BuildContext context) {
-    return const AppView();
+    return RepositoryProvider.value(
+      value: movieRepository,
+      child: const AppView(),
+    );
   }
 }
 

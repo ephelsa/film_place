@@ -10,12 +10,17 @@ dependencies:
   actor_repository:
     path: packages/actor_repository
   bloc: ^8.0.3
+  core_extensions:
+    path: packages/core_extensions
+  core_ui:
+    path: packages/core_ui
   equatable: ^2.0.3
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
   flutter_localizations:
     sdk: flutter
+  flutter_services_binding: ^0.1.0
   genre_repository:
     path: packages/genre_repository
   hive_local_storage:

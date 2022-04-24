@@ -7,5 +7,18 @@
     "favoritesHomeTabTitle": "Favorites",
     "@favoritesHomeTabTitle": {
         "description": "Home tab option for favorites"
+    },
+    "comingSoonSectionLabel": "Coming Soon",
+    "@comingSoonSectionLabel": {
+        "description": "Coming Soon section in Movies tab"
+    },
+    "currentTrailerLabel": "Trailer: \"{title}\"",
+    "@currentTrailerLabel": {
+        "description": "Current trailer with title reproducing",
+        "placeholders" : {
+            "title": {
+                "description": "Title of the trailer"
+            }
+        }
     }
 }

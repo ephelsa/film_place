@@ -69,12 +69,11 @@ class _HomeTabButton extends StatelessWidget {
     return InkWell(
       child: Text(
         title,
-        style: TextStyle(
-          color: groupValue == value
-              ? Theme.of(context).colorScheme.secondary
-              : null,
-          fontSize: 14,
-        ),
+        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+              color: groupValue == value
+                  ? Theme.of(context).colorScheme.secondary
+                  : null,
+            ),
       ),
       onTap: () => context.read<HomeCubit>().setTab(value),
     );

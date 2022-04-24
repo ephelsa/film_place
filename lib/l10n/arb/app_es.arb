@@ -7,5 +7,18 @@
     "favoritesHomeTabTitle": "Favoritos",
     "@favoritesHomeTabTitle": {
         "description": "Opción mostrada en el home referente a favoritos"
+    },
+    "comingSoonSectionLabel": "Próximamente",
+    "@comingSoonSectionLabel": {
+        "description": "Sección de películas próximas a estrenar"
+    },
+    "currentTrailerLabel": "Tráiler: \"{title}\"",
+    "@currentTrailerLabel": {
+        "description": "Tráiler con título que se reproduce actualmente",
+        "placeholders" : {
+            "title": {
+                "description": "Título del tráiler a reporducir"
+            }
+        }
     }
 }
