@@ -9,6 +9,7 @@ environment:
 dependencies:
   actor_repository:
     path: ../actor_repository
+  equatable: ^2.0.3
   genre_repository:
     path: ../genre_repository
   hive_local_storage:
