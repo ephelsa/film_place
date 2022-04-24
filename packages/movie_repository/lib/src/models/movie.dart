@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:genre_repository/genre_repository.dart';
+import 'package:the_movie_db_api/the_movie_db_api.dart';
 
 class Movie extends Equatable {
   const Movie({
@@ -10,6 +11,18 @@ class Movie extends Equatable {
     required this.votesAverage,
     required this.genres,
   });
+
+  /// Movie mapper from [MovieRemote]
+  factory Movie.fromMovieRemote(MovieRemote remote, List<Genre> genres) {
+    return Movie(
+      id: remote.id,
+      imagePath: remote.backdropPath,
+      title: remote.title,
+      isAdult: remote.isAdult,
+      votesAverage: remote.voteAverage,
+      genres: genres,
+    );
+  }
 
   final int id;
   final String imagePath;

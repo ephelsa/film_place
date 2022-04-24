@@ -14,6 +14,7 @@ dependencies:
     path: ../genre_repository
   hive_local_storage:
     path: ../hive_local_storage
+  rxdart: ^0.27.3
   the_movie_db_api:
     path: ../the_movie_db_api
 dev_dependencies:
