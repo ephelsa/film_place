@@ -46,7 +46,17 @@ class MovieRepositoryMock implements MovieRepository {
 
   ///
   @override
-  Stream<List<Movie>> getTrendingNowMovies() async* {}
+  Stream<List<Movie>> getTrendingNowMovies() async* {
+    yield* Future<List<Movie>>.delayed(
+      const Duration(seconds: 3),
+      () => [_movies[0]],
+    ).asStream();
+
+    yield* Future<List<Movie>>.delayed(
+      const Duration(seconds: 5),
+      () => [..._movies],
+    ).asStream();
+  }
 
   ///
   @override

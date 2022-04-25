@@ -40,7 +40,7 @@ class MovieApi {
           final movie = MovieRemote.fromJson(json as Map<String, Object?>);
 
           return movie.copyWith(
-            backdropPath: ImageProvider(movie.backdropPath).fullPath,
+            backdropPath: ImageProvider(movie.posterPath).fullPath,
           );
         },
       );

@@ -8,6 +8,7 @@ class MovieRemote with _$MovieRemote {
   const factory MovieRemote({
     required int id,
     @JsonKey(name: 'backdrop_path') required String backdropPath,
+    @JsonKey(name: 'poster_path') required String posterPath,
     @JsonKey(name: 'original_title') required String title,
     @JsonKey(name: 'adult') required bool isAdult,
     @JsonKey(name: 'vote_average') required double voteAverage,

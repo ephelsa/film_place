@@ -19,6 +19,8 @@ class MovieRepository {
 
   final _comingSoonStreamController =
       BehaviorSubject<List<Movie>>.seeded(const []);
+  final _trendingNowStreamController =
+      BehaviorSubject<List<Movie>>.seeded(const []);
 
   ///
   Stream<List<Movie>> getComingSoonMovies() async* {
@@ -39,7 +41,22 @@ class MovieRepository {
   }
 
   ///
-  Stream<List<Movie>> getTrendingNowMovies() async* {}
+  Stream<List<Movie>> getTrendingNowMovies() async* {
+    final response = await _movieApi.fetchTrendingNowMovies();
+
+    for (final remote in response?.results ?? <MovieRemote>[]) {
+      final genres =
+          await _genreRepository.getMovieGenresByIds(remote.genreIds);
+      final movie = Movie.fromMovieRemote(remote, genres);
+
+      _trendingNowStreamController.add([
+        ..._trendingNowStreamController.value,
+        movie,
+      ]);
+    }
+
+    yield* _trendingNowStreamController.asBroadcastStream();
+  }
 
   ///
   Future<void> addFavorite(int movieId) async {}
