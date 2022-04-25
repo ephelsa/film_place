@@ -13,4 +13,7 @@ extension ContextX on BuildContext {
 
     return (width + modifiers) * _aspectRatio;
   }
+
+  bool get isPortrait =>
+      MediaQuery.of(this).orientation == Orientation.portrait;
 }
