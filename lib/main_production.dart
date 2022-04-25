@@ -25,5 +25,6 @@ void main() {
 
   bootstrap(
     movieRepository: movieRepository,
+    genreRepository: genreRepository,
   );
 }

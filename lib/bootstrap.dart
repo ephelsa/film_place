@@ -11,6 +11,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:film_place/app/app.dart';
 import 'package:flutter/widgets.dart';
+import 'package:genre_repository/genre_repository.dart';
 import 'package:movie_repository/movie_repository.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -29,6 +30,7 @@ class AppBlocObserver extends BlocObserver {
 
 Future<void> bootstrap({
   required MovieRepository movieRepository,
+  required GenreRepository genreRepository,
 }) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
@@ -38,7 +40,10 @@ Future<void> bootstrap({
     () async {
       await BlocOverrides.runZoned(
         () async => runApp(
-          App(movieRepository: movieRepository),
+          App(
+            movieRepository: movieRepository,
+            genreRepository: genreRepository,
+          ),
         ),
         blocObserver: AppBlocObserver(),
       );
