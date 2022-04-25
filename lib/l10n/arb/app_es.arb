@@ -12,6 +12,10 @@
     "@comingSoonSectionLabel": {
         "description": "Sección de películas próximas a estrenar"
     },
+    "trendingNowSectionLabel": "En tendencia",
+    "@trendingNowSectionLabel": {
+        "description": "Sección de películas en tendencia"
+    },
     "currentTrailerLabel": "Tráiler: \"{title}\"",
     "@currentTrailerLabel": {
         "description": "Tráiler con título que se reproduce actualmente",

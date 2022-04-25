@@ -1,5 +1,5 @@
 import 'package:core_ui/core_ui.dart';
-import 'package:film_place/movies/bloc/genres_bloc.dart';
+import 'package:film_place/movies/bloc/bloc.dart';
 import 'package:film_place/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

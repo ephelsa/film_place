@@ -12,6 +12,10 @@
     "@comingSoonSectionLabel": {
         "description": "Coming Soon section in Movies tab"
     },
+    "trendingNowSectionLabel": "Trending Now",
+    "@trendingNowSectionLabel": {
+        "description": "Trending now section in Movies tab"
+    },
     "currentTrailerLabel": "Trailer: \"{title}\"",
     "@currentTrailerLabel": {
         "description": "Current trailer with title reproducing",
