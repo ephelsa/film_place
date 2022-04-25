@@ -1,7 +1,7 @@
 import 'package:film_place/favorites/view/favorites_page.dart';
 import 'package:film_place/home/home.dart';
 import 'package:film_place/l10n/l10n.dart';
-import 'package:film_place/movies/view/view.dart';
+import 'package:film_place/movies/movies.dart';
 import 'package:film_place/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,30 +27,37 @@ class HomeView extends StatelessWidget {
     final selectedTab = context.select((HomeCubit cubit) => cubit.state.tab);
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(top: FilmPlaceSpace.small),
-        child: IndexedStack(
-          index: selectedTab.index,
-          children: const [MoviesPage(), FavoritesPage()],
-        ),
-      ),
-      appBar: AppBar(
-        elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            _HomeTabButton(
-              groupValue: selectedTab,
-              value: HomeTab.movies,
-              title: l10n.moviesHomeTabTitle,
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            floating: true,
+            snap: true,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _HomeTabButton(
+                  groupValue: selectedTab,
+                  value: HomeTab.movies,
+                  title: l10n.moviesHomeTabTitle,
+                ),
+                _HomeTabButton(
+                  groupValue: selectedTab,
+                  value: HomeTab.favorites,
+                  title: l10n.favoritesHomeTabTitle,
+                )
+              ],
             ),
-            _HomeTabButton(
-              groupValue: selectedTab,
-              value: HomeTab.favorites,
-              title: l10n.favoritesHomeTabTitle,
-            )
-          ],
-        ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(top: FilmPlaceSpace.small),
+              child: IndexedStack(
+                index: selectedTab.index,
+                children: const [MoviesPage(), FavoritesPage()],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
