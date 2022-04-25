@@ -1,5 +1,4 @@
 import 'package:film_place/l10n/l10n.dart';
-import 'package:film_place/movies/bloc/genres_bloc.dart';
 import 'package:film_place/movies/movies.dart';
 import 'package:film_place/theme/space.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +22,11 @@ class MoviesPage extends StatelessWidget {
           create: (context) => GenresBloc(
             genreRepository: context.read<GenreRepository>(),
           )..add(const GenresSubscriptionRequested()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              TrendingNowBloc(movieRepository: context.read<MovieRepository>())
+                ..add(const TrendingNowSubscriptionRequested()),
         )
       ],
       child: const MoviesView(),
@@ -47,7 +51,9 @@ class MoviesView extends StatelessWidget {
             context
                 .read<ComingSoonBloc>()
                 .add(ComingSoonFilterChanged(state.selectedGenre));
-            // TODO(ephelsa): Call Trending filter
+            context
+                .read<TrendingNowBloc>()
+                .add(TrendingNowFilterChanged(state.selectedGenre));
           },
         ),
         BlocListener<ComingSoonBloc, ComingSoonState>(
@@ -107,28 +113,16 @@ class MoviesView extends StatelessWidget {
           },
         ),
       ],
-      child: ListView(
+      child: Column(
         children: const [
           ComingSoonSection(),
           Padding(
             padding: EdgeInsets.symmetric(vertical: FilmPlaceSpace.medium),
             child: GenresList(),
           ),
-          _TrendingNowSection(),
+          TrendingNowSection(),
         ],
       ),
-    );
-  }
-}
-
-class _TrendingNowSection extends StatelessWidget {
-  const _TrendingNowSection({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.orange,
-      child: const Text('Trending Now section'),
     );
   }
 }
