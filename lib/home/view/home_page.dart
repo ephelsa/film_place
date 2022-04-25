@@ -2,6 +2,7 @@ import 'package:film_place/favorites/view/favorites_page.dart';
 import 'package:film_place/home/home.dart';
 import 'package:film_place/l10n/l10n.dart';
 import 'package:film_place/movies/view/view.dart';
+import 'package:film_place/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,9 +27,12 @@ class HomeView extends StatelessWidget {
     final selectedTab = context.select((HomeCubit cubit) => cubit.state.tab);
 
     return Scaffold(
-      body: IndexedStack(
-        index: selectedTab.index,
-        children: const [MoviesPage(), FavoritesPage()],
+      body: Padding(
+        padding: const EdgeInsets.only(top: FilmPlaceSpace.small),
+        child: IndexedStack(
+          index: selectedTab.index,
+          children: const [MoviesPage(), FavoritesPage()],
+        ),
       ),
       appBar: AppBar(
         elevation: 0,
