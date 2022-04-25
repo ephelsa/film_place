@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class MovieDetailsPage extends StatelessWidget {
-  const MovieDetailsPage({Key? key}) : super(key: key);
+  const MovieDetailsPage(this.movieId, {Key? key}) : super(key: key);
 
   static Route<void> route({required int movieId}) {
     return MaterialPageRoute(
       fullscreenDialog: true,
-      builder: (context) => const MovieDetailsPage(),
+      builder: (context) => MovieDetailsPage(movieId),
     );
   }
+
+  final int movieId;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class MovieDetailsPage extends StatelessWidget {
       body: SafeArea(
         child: Container(
           color: Colors.purple,
-          child: const Text('Movie Details page'),
+          child: Text('MovieID: $movieId'),
         ),
       ),
     );
