@@ -13,6 +13,7 @@ class TrendingNowCard extends StatelessWidget {
     required this.genres,
     required this.voteAverage,
     required this.title,
+    required this.onClick,
   }) : super(key: key);
 
   final double width;
@@ -22,6 +23,7 @@ class TrendingNowCard extends StatelessWidget {
   final List<Genre> genres;
   final double voteAverage;
   final String title;
+  final VoidCallback onClick;
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +34,14 @@ class TrendingNowCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.network(
-              imageUrl,
-              height: height * 0.75,
-              width: width,
-              fit: BoxFit.cover,
+            child: InkWell(
+              onTap: onClick,
+              child: Image.network(
+                imageUrl,
+                height: height * 0.75,
+                width: width,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Padding(

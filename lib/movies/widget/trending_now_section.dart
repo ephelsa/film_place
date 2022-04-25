@@ -1,6 +1,7 @@
 import 'package:core_extensions/core_extensions.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:film_place/l10n/l10n.dart';
+import 'package:film_place/movie_details/view/view.dart';
 import 'package:film_place/movies/movies.dart';
 import 'package:film_place/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -78,6 +79,9 @@ class TrendingNowSection extends StatelessWidget {
                       genres: movie.genres,
                       voteAverage: movie.votesAverage,
                       title: movie.title,
+                      onClick: () => Navigator.of(context).push(
+                        MovieDetailsPage.route(movieId: movie.id),
+                      ),
                     );
                   },
                 ),
