@@ -8,18 +8,31 @@ class ComingSoonState extends Equatable {
     this.movies,
     this.isPlayingMovie = false,
     this.currentMovieReproduced,
+    this.genreToFilter,
   });
 
   final ComingSoonStatus status;
   final List<Movie>? movies;
   final bool isPlayingMovie;
   final Movie? currentMovieReproduced;
+  final Genre? genreToFilter;
 
-  ComingSoonState copyWidth({
+  List<Movie>? moviesFiltered() {
+    if (genreToFilter != null) {
+      return movies
+          ?.where((movie) => movie.genres.contains(genreToFilter))
+          .toList();
+    }
+
+    return movies;
+  }
+
+  ComingSoonState copyWith({
     ComingSoonStatus? status,
     List<Movie>? movies,
     bool? isPlayingMovie,
     Movie? currentMovieReproduced,
+    Genre? Function()? genreToFilter,
   }) {
     return ComingSoonState(
       status: status ?? this.status,
@@ -27,6 +40,8 @@ class ComingSoonState extends Equatable {
       isPlayingMovie: isPlayingMovie ?? this.isPlayingMovie,
       currentMovieReproduced:
           currentMovieReproduced ?? this.currentMovieReproduced,
+      genreToFilter:
+          genreToFilter != null ? genreToFilter() : this.genreToFilter,
     );
   }
 
@@ -36,5 +51,6 @@ class ComingSoonState extends Equatable {
         movies,
         isPlayingMovie,
         currentMovieReproduced,
+        genreToFilter,
       ];
 }

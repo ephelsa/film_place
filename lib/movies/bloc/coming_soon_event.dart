@@ -4,7 +4,7 @@ abstract class ComingSoonEvent extends Equatable {
   const ComingSoonEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class ComingSoonSubscriptionRequested extends ComingSoonEvent {
@@ -26,4 +26,13 @@ class ComingSoonPlayRequested extends ComingSoonEvent {
 
 class ComingSoonPauseRequested extends ComingSoonEvent {
   const ComingSoonPauseRequested();
+}
+
+class ComingSoonFilterChanged extends ComingSoonEvent {
+  const ComingSoonFilterChanged(this.genre);
+
+  final Genre? genre;
+
+  @override
+  List<Object?> get props => [genre];
 }

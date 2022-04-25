@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:genre_repository/genre_repository.dart';
 import 'package:movie_repository/movie_repository.dart';
 
 part 'coming_soon_event.dart';
@@ -16,6 +17,7 @@ class ComingSoonBloc extends Bloc<ComingSoonEvent, ComingSoonState> {
     on<ComingSoonRetryRequested>(_onRetryRequested);
     on<ComingSoonPlayRequested>(_onPlayRequested);
     on<ComingSoonPauseRequested>(_onPauseRequested);
+    on<ComingSoonFilterChanged>(_onFilterChanged);
   }
 
   final MovieRepository _movieRepository;
@@ -24,15 +26,15 @@ class ComingSoonBloc extends Bloc<ComingSoonEvent, ComingSoonState> {
     ComingSoonSubscriptionRequested event,
     Emitter<ComingSoonState> emit,
   ) async {
-    emit(state.copyWidth(status: ComingSoonStatus.loading));
+    emit(state.copyWith(status: ComingSoonStatus.loading));
 
     await emit.forEach<List<Movie>>(
       _movieRepository.getComingSoonMovies(),
-      onData: (movies) => state.copyWidth(
+      onData: (movies) => state.copyWith(
         status: ComingSoonStatus.success,
         movies: movies,
       ),
-      onError: (_, __) => state.copyWidth(status: ComingSoonStatus.failure),
+      onError: (_, __) => state.copyWith(status: ComingSoonStatus.failure),
     );
   }
 
@@ -40,15 +42,15 @@ class ComingSoonBloc extends Bloc<ComingSoonEvent, ComingSoonState> {
     ComingSoonRetryRequested event,
     Emitter<ComingSoonState> emit,
   ) async {
-    emit(state.copyWidth(status: ComingSoonStatus.loading));
+    emit(state.copyWith(status: ComingSoonStatus.loading));
 
     await emit.forEach<List<Movie>>(
       _movieRepository.getComingSoonMovies(),
-      onData: (movies) => state.copyWidth(
+      onData: (movies) => state.copyWith(
         status: ComingSoonStatus.success,
         movies: movies,
       ),
-      onError: (_, __) => state.copyWidth(status: ComingSoonStatus.failure),
+      onError: (_, __) => state.copyWith(status: ComingSoonStatus.failure),
     );
   }
 
@@ -57,7 +59,7 @@ class ComingSoonBloc extends Bloc<ComingSoonEvent, ComingSoonState> {
     Emitter<ComingSoonState> emit,
   ) {
     emit(
-      state.copyWidth(
+      state.copyWith(
         currentMovieReproduced: event.movie,
         isPlayingMovie: true,
       ),
@@ -69,9 +71,16 @@ class ComingSoonBloc extends Bloc<ComingSoonEvent, ComingSoonState> {
     Emitter<ComingSoonState> emit,
   ) {
     emit(
-      state.copyWidth(
+      state.copyWith(
         isPlayingMovie: false,
       ),
     );
+  }
+
+  FutureOr<void> _onFilterChanged(
+    ComingSoonFilterChanged event,
+    Emitter<ComingSoonState> emit,
+  ) {
+    emit(state.copyWith(genreToFilter: () => event.genre));
   }
 }
