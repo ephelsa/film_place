@@ -32,6 +32,7 @@ class ComingSoonCard extends StatelessWidget {
               child: Image.network(
                 imageUrl,
                 fit: BoxFit.cover,
+                cacheHeight: height.ceil(),
               ),
             ),
             Positioned(

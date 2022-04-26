@@ -62,6 +62,8 @@ class MoviesView extends StatelessWidget {
               (current.currentMovieReproduced != null ||
                   previous.isPlayingMovie != current.isPlayingMovie),
           listener: (context, state) {
+            const imageHeight = 50.0;
+
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(
@@ -74,8 +76,9 @@ class MoviesView extends StatelessWidget {
                       Image.network(
                         state.currentMovieReproduced!.imagePath,
                         width: 100,
-                        height: 50,
+                        height: imageHeight,
                         fit: BoxFit.cover,
+                        cacheHeight: imageHeight.toInt(),
                       ),
                       Flexible(
                         child: Text(

@@ -24,5 +24,9 @@
                 "description": "Título del tráiler a reporducir"
             }
         }
+    },
+    "plus18": "+18",
+    "@plus18": {
+        "description": "Señal de +18"
     }
 }

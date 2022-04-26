@@ -1,4 +1,5 @@
 import 'package:core_ui/core_ui.dart';
+import 'package:film_place/l10n/l10n.dart';
 import 'package:film_place/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:genre_repository/genre_repository.dart';
@@ -27,6 +28,8 @@ class TrendingNowCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final imageHeight = height * 0.75;
+
     return SizedBox(
       width: width,
       height: height,
@@ -38,8 +41,9 @@ class TrendingNowCard extends StatelessWidget {
               onTap: onClick,
               child: Image.network(
                 imageUrl,
-                height: height * 0.75,
+                height: imageHeight,
                 width: width,
+                cacheHeight: imageHeight.toInt(),
                 fit: BoxFit.cover,
               ),
             ),
@@ -86,6 +90,8 @@ class _TagList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return SizedBox(
       height: 35,
       child: ListView(
@@ -97,41 +103,29 @@ class _TagList extends StatelessWidget {
               padding: EdgeInsets.symmetric(
                 horizontal: _hSpace,
               ),
-              child: const PillWidget(
-                child: Text('+18'),
+              child: PillWidget(
+                child: Text(l10n.plus18),
               ),
             ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: _hSpace),
-            child: PillWidget(
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.star,
-                    size: 16,
-                    color: FilmPlaceColor.mustard,
-                  ),
-                  Text(voteAverage.toString())
-                ],
-              ),
+            child: VotesWidget(
+              voteAverage,
+              size: 14,
+              color: FilmPlaceColor.mustard,
             ),
           ),
-          ..._buildGenres(),
+          // Genres
+          ...genres.map((genre) {
+            return Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: _hSpace,
+              ),
+              child: PillWidget(child: Text(genre.name)),
+            );
+          }).toList(),
         ],
       ),
     );
-  }
-
-  List<Widget> _buildGenres() {
-    return genres
-        .map(
-          (genre) => Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: _hSpace,
-            ),
-            child: PillWidget(child: Text(genre.name)),
-          ),
-        )
-        .toList();
   }
 }
