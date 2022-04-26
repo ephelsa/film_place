@@ -48,4 +48,19 @@ class MovieApi {
       throw TMDBException();
     }
   }
+
+  Future<MovieDetailsRemote> getDetails(int movieId) async {
+    try {
+      final response =
+          await _client.get<Map<String, Object?>>('/movie/$movieId');
+
+      final details = MovieDetailsRemote.fromJson(response.data!);
+
+      return details.copyWith(
+        posterPath: ImageProvider(details.posterPath).fullPath,
+      );
+    } catch (_) {
+      throw TMDBException();
+    }
+  }
 }

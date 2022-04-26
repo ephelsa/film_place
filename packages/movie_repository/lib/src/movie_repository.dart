@@ -1,4 +1,5 @@
 import 'package:genre_repository/genre_repository.dart';
+import 'package:hive_local_storage/hive_local_storage.dart';
 import 'package:movie_repository/src/models/models.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:the_movie_db_api/the_movie_db_api.dart';
@@ -11,11 +12,14 @@ class MovieRepository {
   MovieRepository({
     required MovieApi movieApi,
     required GenreRepository genreRepository,
+    required FavoriteDao favoriteDao,
   })  : _movieApi = movieApi,
-        _genreRepository = genreRepository;
+        _genreRepository = genreRepository,
+        _favoriteDao = favoriteDao;
 
   final MovieApi _movieApi;
   final GenreRepository _genreRepository;
+  final FavoriteDao _favoriteDao;
 
   final _comingSoonStreamController =
       BehaviorSubject<List<Movie>>.seeded(const []);
@@ -59,21 +63,41 @@ class MovieRepository {
   }
 
   ///
-  Future<void> addFavorite(int movieId) async {}
+  Future<void> addFavorite(int movieId) =>
+      _favoriteDao.addFavoriteMovieId(movieId);
 
   ///
-  Future<void> removeFavorite(int movieId) async {}
+  Future<void> removeFavorite(int movieId) =>
+      _favoriteDao.removeFavoriteMovieId(movieId);
 
   ///
-  Stream<List<Movie>> getFavoriteMovies() async* {}
+  Stream<List<MovieDetails>> getFavoriteMovies() {
+    return _favoriteDao
+        .fetchFavoritesMovies()
+        .asyncMap<List<MovieDetails>>(_fetchMovieDetailsByIds)
+        .asBroadcastStream();
+  }
+
+  Future<List<MovieDetails>> _fetchMovieDetailsByIds(List<int> ids) {
+    final result = ids.map(
+      (id) async =>
+          MovieDetails.fromMovieDetailsRemote(await _movieApi.getDetails(id)),
+    );
+
+    return Stream.fromFutures(result).toList();
+  }
 
   ///
   Future<bool> isFavoriteMovie(int movieId) async {
-    throw UnimplementedError();
+    final movies = await _favoriteDao.fetchFavoritesMovies().first;
+
+    return movies.contains(movieId);
   }
 
   ///
   Future<MovieDetails> movieDetails(int movieId) async {
-    throw UnimplementedError();
+    final response = await _movieApi.getDetails(movieId);
+
+    return MovieDetails.fromMovieDetailsRemote(response);
   }
 }

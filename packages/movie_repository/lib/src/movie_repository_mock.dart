@@ -68,7 +68,15 @@ class MovieRepositoryMock implements MovieRepository {
 
   ///
   @override
-  Stream<List<Movie>> getFavoriteMovies() async* {}
+  Stream<List<MovieDetails>> getFavoriteMovies() async* {
+    yield [
+      await movieDetails(0),
+      await movieDetails(1),
+      await movieDetails(2),
+      await movieDetails(3),
+      await movieDetails(4),
+    ];
+  }
 
   ///
   @override
@@ -87,7 +95,7 @@ class MovieRepositoryMock implements MovieRepository {
       imagePath:
           'https://image.tmdb.org/t/p/original/zhLKlUaF1SEpO58ppHIAyENkwgw.jpg',
       title: 'The Northman',
-      isAdult: false,
+      isAdult: true,
       votesAverage: 8.1,
       genres: const [
         Genre(id: 1, name: 'Action'),
