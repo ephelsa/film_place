@@ -1,4 +1,4 @@
-import 'package:film_place/favorites/view/favorites_page.dart';
+import 'package:film_place/favorites/favorites.dart';
 import 'package:film_place/home/home.dart';
 import 'package:film_place/l10n/l10n.dart';
 import 'package:film_place/movies/movies.dart';
@@ -48,11 +48,12 @@ class HomeView extends StatelessWidget {
               ],
             ),
           ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.only(top: FilmPlaceSpace.small),
+          SliverPadding(
+            padding: const EdgeInsets.only(top: FilmPlaceSpace.small),
+            sliver: SliverToBoxAdapter(
               child: IndexedStack(
                 index: selectedTab.index,
+                sizing: StackFit.expand,
                 children: const [MoviesPage(), FavoritesPage()],
               ),
             ),
