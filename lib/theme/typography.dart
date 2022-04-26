@@ -8,7 +8,13 @@ class FilmPlaceTypography {
     headline1: TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 34,
-      letterSpacing: -1.5,
+      letterSpacing: 0.5,
+      color: FilmPlaceColor.mintCream,
+    ),
+    headline3: TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: 26,
+      letterSpacing: 1.2,
       color: FilmPlaceColor.mintCream,
     ),
     headline6: TextStyle(
