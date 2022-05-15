@@ -39,7 +39,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     Emitter<FavoritesState> emit,
   ) async {
     await _movieRepository.removeFavorite(event.movieId).onError(
-          (_, __) => state.copyWith(status: FavoritesStatus.failure),
+          (_, __) => emit(state.copyWith(status: FavoritesStatus.failure)),
         );
   }
 }
