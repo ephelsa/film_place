@@ -80,11 +80,8 @@ class MovieRepositoryMock implements MovieRepository {
 
   ///
   @override
-  Future<bool> isFavoriteMovie(int movieId) async {
-    return Future.delayed(
-      const Duration(seconds: 1),
-      () => Random.secure().nextBool(),
-    );
+  Stream<bool> isFavoriteMovie(int movieId) {
+    return Stream<bool>.value(Random.secure().nextBool());
   }
 
   ///

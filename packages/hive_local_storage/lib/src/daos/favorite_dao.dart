@@ -5,7 +5,14 @@ class FavoriteDao {
   FavoriteDao();
 
   final _favoriteMoviesStreamController =
-      BehaviorSubject<List<int>>.seeded(const []);
+      BehaviorSubject<List<int>>.seeded(const [])
+        ..addStream(_initFavoriteMoviesFetched());
+
+  static Stream<List<int>> _initFavoriteMoviesFetched() async* {
+    final box = await OpenBox.favoriteMovies();
+
+    yield* Stream.value(box.values.toList());
+  }
 
   Future<void> addFavoriteMovieId(int id) async {
     final box = await OpenBox.favoriteMovies();
@@ -29,7 +36,7 @@ class FavoriteDao {
     _favoriteMoviesStreamController.add(box.values.toList());
   }
 
-  Stream<List<int>> fetchFavoritesMovies() =>
+  Stream<List<int>> fetchFavoriteMovies() =>
       _favoriteMoviesStreamController.asBroadcastStream();
 }
 

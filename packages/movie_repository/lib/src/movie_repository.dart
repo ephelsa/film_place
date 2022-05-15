@@ -73,7 +73,7 @@ class MovieRepository {
   ///
   Stream<List<MovieDetails>> getFavoriteMovies() {
     return _favoriteDao
-        .fetchFavoritesMovies()
+        .fetchFavoriteMovies()
         .asyncMap<List<MovieDetails>>(_fetchMovieDetailsByIds)
         .asBroadcastStream();
   }
@@ -88,10 +88,10 @@ class MovieRepository {
   }
 
   ///
-  Future<bool> isFavoriteMovie(int movieId) async {
-    final movies = await _favoriteDao.fetchFavoritesMovies().first;
-
-    return movies.contains(movieId);
+  Stream<bool> isFavoriteMovie(int movieId) {
+    return _favoriteDao
+        .fetchFavoriteMovies()
+        .map((event) => event.contains(movieId));
   }
 
   ///
