@@ -1,29 +1,23 @@
 import 'package:core_ui/core_ui.dart';
+import 'package:film_place/favorites/widget/favorite_button.dart';
 import 'package:film_place/l10n/l10n.dart';
 import 'package:film_place/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:genre_repository/genre_repository.dart';
+import 'package:movie_repository/movie_repository.dart';
 
 class TrendingNowCard extends StatelessWidget {
   const TrendingNowCard({
     Key? key,
     required this.width,
     required this.height,
-    required this.imageUrl,
-    required this.isAdult,
-    required this.genres,
-    required this.voteAverage,
-    required this.title,
+    required this.movie,
     required this.onClick,
   }) : super(key: key);
 
   final double width;
   final double height;
-  final String imageUrl;
-  final bool isAdult;
-  final List<Genre> genres;
-  final double voteAverage;
-  final String title;
+  final Movie movie;
   final VoidCallback onClick;
 
   @override
@@ -37,14 +31,19 @@ class TrendingNowCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: InkWell(
+            child: GestureDetector(
               onTap: onClick,
-              child: Image.network(
-                imageUrl,
-                height: imageHeight,
-                width: width,
-                cacheHeight: imageHeight.toInt(),
-                fit: BoxFit.cover,
+              child: Stack(
+                children: [
+                  Image.network(
+                    movie.imagePath,
+                    height: imageHeight,
+                    width: width,
+                    cacheHeight: imageHeight.toInt(),
+                    fit: BoxFit.cover,
+                  ),
+                  FavoriteButton(movie.id),
+                ],
               ),
             ),
           ),
@@ -54,13 +53,13 @@ class TrendingNowCard extends StatelessWidget {
             ),
             child: _TagList(
               width: width,
-              isAdult: isAdult,
-              genres: genres,
-              voteAverage: voteAverage,
+              isAdult: movie.isAdult,
+              genres: movie.genres,
+              voteAverage: movie.votesAverage,
             ),
           ),
           Text(
-            title,
+            movie.title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,

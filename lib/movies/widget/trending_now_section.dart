@@ -74,11 +74,7 @@ class TrendingNowSection extends StatelessWidget {
                     return TrendingNowCard(
                       width: cardWidth,
                       height: cardHeight,
-                      imageUrl: movie.imagePath,
-                      isAdult: movie.isAdult,
-                      genres: movie.genres,
-                      voteAverage: movie.votesAverage,
-                      title: movie.title,
+                      movie: movie,
                       onClick: () => Navigator.of(context).push(
                         MovieDetailsPage.route(movieId: movie.id),
                       ),
