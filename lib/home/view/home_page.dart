@@ -78,7 +78,7 @@ class _HomeTabButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       child: Text(
         title,
         style: Theme.of(context).textTheme.bodyText1!.copyWith(

@@ -9,6 +9,14 @@ class HomeState extends Equatable {
 
   final HomeTab tab;
 
+  HomeState copyWith({
+    HomeTab? tab,
+  }) {
+    return HomeState(
+      tab: tab ?? this.tab,
+    );
+  }
+
   @override
   List<Object?> get props => [tab];
 }
